@@ -11,6 +11,30 @@
 #pragma mark - 实用方法
 typedef void (^TouchedBlock)(NSInteger tag);
 @interface UIButton (X)
+
+/**
+ 快速创建文字按钮（默认状态）
+
+ @param title 文字
+ @param titleColor 文字颜色
+ @param font 字体
+ @param color 按钮背景颜色
+ @return 按钮
+ */
++ (UIButton *)buttonTextTypeWithTitle:(NSString *)title titleColor:(UIColor *)titleColor font:(UIFont *)font backColor:(UIColor *)color;
+
+
+/**
+ 快速创建图片按钮(默认状态)
+
+ @param imageName 图片名称
+ @param title 标题(默认字体14号黑色)
+ @return 按钮
+ */
++ (UIButton *)buttonImageTypeWithImageName:(NSString *)imageName title:(NSString *)title;
+
+
+
 /**
  *  @brief  使用颜色设置按钮背景
  *

@@ -86,9 +86,141 @@ static char kActionHandlerLongPressGestureKey;
     self.layer.shadowRadius = radius;
 }
 
+/**
+ ** lineView:       需要绘制成虚线的view
+ ** lineLength:     虚线的宽度
+ ** lineSpacing:    虚线的间距
+ ** lineColor:      虚线的颜色
+ **/
++ (void)drawDashLine:(UIView *)lineView lineLength:(int)lineLength lineSpacing:(int)lineSpacing lineColor:(UIColor *)lineColor
+{
+    CAShapeLayer *shapeLayer = [CAShapeLayer layer];
+    [shapeLayer setBounds:lineView.bounds];
+    [shapeLayer setPosition:CGPointMake(CGRectGetWidth(lineView.frame) / 2, CGRectGetHeight(lineView.frame))];
+    [shapeLayer setFillColor:[UIColor clearColor].CGColor];
+    
+    //  设置虚线颜色为blackColor
+    [shapeLayer setStrokeColor:lineColor.CGColor];
+    
+    //  设置虚线宽度
+    [shapeLayer setLineWidth:CGRectGetHeight(lineView.frame)];
+    [shapeLayer setLineJoin:kCALineJoinRound];
+    
+    //  设置线宽，线间距
+    [shapeLayer setLineDashPattern:[NSArray arrayWithObjects:[NSNumber numberWithInt:lineLength], [NSNumber numberWithInt:lineSpacing], nil]];
+    
+    //  设置路径
+    CGMutablePathRef path = CGPathCreateMutable();
+    CGPathMoveToPoint(path, NULL, 0, 0);
+    CGPathAddLineToPoint(path, NULL, CGRectGetWidth(lineView.frame), 0);
+    
+    [shapeLayer setPath:path];
+    CGPathRelease(path);
+    
+    //  把绘制好的虚线添加上来
+    [lineView.layer addSublayer:shapeLayer];
+}
+
 @end
 
+@implementation UIView (XQuickInit)
 
+/**
+ 快速创建文字按钮（默认状态）
+ 
+ @param title 文字
+ @param titleColor 文字颜色
+ @param font 字体
+ @param color 按钮背景颜色
+ @return 按钮
+ */
+- (UIButton *)addButtonTextTypeWithTitle:(NSString *)title titleColor:(UIColor *)titleColor font:(UIFont *)font backColor:(UIColor *)color
+{
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    [button setTitle:title forState:UIControlStateNormal];
+    [button setTitleColor:titleColor forState:UIControlStateNormal];
+    button.titleLabel.font = font;
+    [button setBackgroundColor:color];
+    [self addSubview:button];
+    return button;
+}
+
+/**
+ 快速创建图片按钮(默认状态)
+ 
+ @param imageName 图片名称
+ @param title 标题(默认字体14号黑色)
+ @return 按钮
+ */
+- (UIButton *)addButtonImageTypeWithImageName:(NSString *)imageName title:(NSString *)title
+{
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    [button setTitle:title forState:UIControlStateNormal];
+    button.titleLabel.font = [UIFont systemFontOfSize:14.0];
+    [button setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
+    [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [self addSubview:button];
+    return button;
+}
+
+/**
+ 添加Label
+ 
+ @param title 标题
+ @param font 字体
+ @param color 颜色
+ @return Label
+ */
+-(UILabel *_Nullable)addLabelWithTitle:(NSString *_Nullable)title
+                                  font:(UIFont *_Nullable)font
+                             textColor:(UIColor *_Nullable)color
+{
+    UILabel *label = [[UILabel alloc] init];
+    label.text = title;
+    label.font = font;
+    label.textColor = color;
+    [self addSubview:label];
+    return label;
+}
+
+/**
+ 添加ImageView到当前View
+ 
+ @param image 图片
+ @return ImageView
+ */
+-(UIImageView *_Nullable)addImageViewWithImage:(NSString *)image
+{
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:image]];
+    imageView.contentMode = UIViewContentModeScaleAspectFill;
+    return imageView;
+}
+
+
+/**
+ 添加TextField到当前View
+ 
+ @param style 风格
+ @param placeholder 提示
+ @param titleColor 颜色
+ @param font 字体
+ @return textfield
+ */
+-(UITextField *_Nullable)addTextFieldWithStyle:(UITextBorderStyle)style
+                                   placeholder:(NSString *_Nullable)placeholder
+                                    titleColor:(UIColor *_Nullable)titleColor
+                                          font:(UIFont *_Nullable)font
+{
+    UITextField *textfield = [[UITextField alloc] init];
+    textfield.borderStyle = style;
+    textfield.placeholder = placeholder;
+    textfield.textColor = titleColor;
+    textfield.font = font;
+    [self addSubview:textfield];
+    return textfield;
+}
+
+@end
 
 
 

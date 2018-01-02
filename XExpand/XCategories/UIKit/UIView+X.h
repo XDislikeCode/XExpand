@@ -25,7 +25,7 @@
 
 /** 切圆角 */
 -(void)cornerRadius: (CGFloat)radius
-         borderWidth: (CGFloat)width
+        borderWidth: (CGFloat)width
               color: (UIColor *_Nullable)color;
 
 
@@ -35,9 +35,76 @@
                opacity: (CGFloat)opacity
                 radius: (CGFloat)radius;
 
+/**
+ ** lineView:       需要绘制成虚线的view
+ ** lineLength:     虚线的宽度
+ ** lineSpacing:    虚线的间距
+ ** lineColor:      虚线的颜色
+ **/
++ (void)drawDashLine:(UIView *_Nullable)lineView lineLength:(int)lineLength lineSpacing:(int)lineSpacing lineColor:(UIColor *_Nullable)lineColor;
+
 @end
 
+#pragma mark - 快速添加简单视图
+@interface UIView (XQuickInit)
 
+/**
+ 快速添加文字按钮（默认状态）
+ 
+ @param title 文字
+ @param titleColor 文字颜色
+ @param font 字体
+ @param color 按钮背景颜色
+ @return 按钮
+ */
+- (UIButton *_Nullable)addButtonTextTypeWithTitle:(NSString *_Nullable)title titleColor:(UIColor *_Nullable)titleColor font:(UIFont *_Nullable)font backColor:(UIColor *_Nullable)color;
+
+
+/**
+ 快速添加图片按钮(默认状态)
+ 
+ @param imageName 图片名称
+ @param title 标题(默认字体14号黑色)
+ @return 按钮
+ */
+- (UIButton *_Nullable)addButtonImageTypeWithImageName:(NSString *_Nullable)imageName title:(NSString *_Nullable)title;
+
+/**
+ 添加Label
+ 
+ @param title 标题
+ @param font 字体
+ @param color 颜色
+ @return Label
+ */
+-(UILabel *_Nullable)addLabelWithTitle:(NSString *_Nullable)title
+                                  font:(UIFont *_Nullable)font
+                             textColor:(UIColor *_Nullable)color;
+
+/**
+ 添加ImageView到当前View
+ 
+ @param image 图片
+ @return ImageView
+ */
+-(UIImageView *_Nullable)addImageViewWithImage:(NSString *_Nullable)image;
+
+
+/**
+ 添加TextField到当前View
+
+ @param style 风格
+ @param placeholder 提示
+ @param titleColor 颜色
+ @param font 字体
+ @return textfield
+ */
+-(UITextField *_Nullable)addTextFieldWithStyle:(UITextBorderStyle)style
+                          placeholder:(NSString *_Nullable)placeholder
+                                    titleColor:(UIColor *_Nullable)titleColor
+                                 font:(UIFont *_Nullable)font;
+
+@end
 
 
 
@@ -153,7 +220,7 @@ typedef NS_ENUM(NSInteger, UIViewBorderLineType) {
 
 /**
  单独设置边框
-
+ 
  @param color 边框颜色
  @param border 宽度
  @param borderLineType 边框位置

@@ -14,6 +14,44 @@
 #pragma mark - 实用方法
 static const void *UIButtonBlockKey = &UIButtonBlockKey;
 @implementation UIButton (X)
+
+/**
+ 快速创建文字按钮（默认状态）
+ 
+ @param title 文字
+ @param titleColor 文字颜色
+ @param font 字体
+ @param color 按钮背景颜色
+ @return 按钮
+ */
++(UIButton *)buttonTextTypeWithTitle:(NSString *)title titleColor:(UIColor *)titleColor font:(UIFont *)font backColor:(UIColor *)color
+{
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    [button setTitle:title forState:UIControlStateNormal];
+    [button setTitleColor:titleColor forState:UIControlStateNormal];
+    button.titleLabel.font = font;
+    [button setBackgroundColor:color];
+    return button;
+}
+
+/**
+ 快速创建图片按钮(默认状态)
+ 
+ @param imageName 图片名称
+ @param title 标题(默认字体14号黑色)
+ @return 按钮
+ */
++(UIButton *)buttonImageTypeWithImageName:(NSString *)imageName title:(NSString *)title
+{
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    [button setTitle:title forState:UIControlStateNormal];
+    button.titleLabel.font = [UIFont systemFontOfSize:14.0];
+    [button setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
+    [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    return button;
+}
+
+
 /**
  *  @brief  使用颜色设置按钮背景
  *
@@ -75,19 +113,15 @@ static NSString *const kButtonTextObjectKey = @"buttonTextObject";
     [self setTitle:@"" forState:UIControlStateNormal];
     self.enabled = NO;
     [self addSubview:indicator];
-    
-    
 }
 
 - (void) hideIndicator {
-    
     NSString *currentButtonText = (NSString *)objc_getAssociatedObject(self, &kButtonTextObjectKey);
     UIActivityIndicatorView *indicator = (UIActivityIndicatorView *)objc_getAssociatedObject(self, &kIndicatorViewKey);
     
     [indicator removeFromSuperview];
     [self setTitle:currentButtonText forState:UIControlStateNormal];
     self.enabled = YES;
-    
 }
 
 @end

@@ -10,9 +10,10 @@
 #import <UIKit/UIKit.h>
 
 @interface NSString (X)
+@end
 
+@interface NSString (XPredicate)
 #pragma mark - 正则表达式
-
 /** 邮箱验证 */
 - (BOOL)isValidEmail;
 
@@ -80,8 +81,11 @@
       containOtherCharacter:(NSString *)containOtherCharacter
         firstCannotBeDigtal:(BOOL)firstCannotBeDigtal;
 
-#pragma mark - 文字尺寸计算
+@end
 
+
+#pragma mark - 文字尺寸计算
+@interface NSString (XSize)
 /**
  *  @brief 计算文字的高度
  *
@@ -113,4 +117,18 @@
 - (CGSize)sizeWithFont:(UIFont *)font constrainedToHeight:(CGFloat)height;
 
 
+@end
+
+
+#pragma mark - hash加密
+@interface NSString (XHash)
+@property (readonly) NSString *md5String;
+@property (readonly) NSString *sha1String;
+@property (readonly) NSString *sha256String;
+@property (readonly) NSString *sha512String;
+
+- (NSString *)hmacMD5StringWithKey:(NSString *)key;
+- (NSString *)hmacSHA1StringWithKey:(NSString *)key;
+- (NSString *)hmacSHA256StringWithKey:(NSString *)key;
+- (NSString *)hmacSHA512StringWithKey:(NSString *)key;
 @end

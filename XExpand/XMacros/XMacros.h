@@ -9,15 +9,15 @@
 #ifndef XMacros_h
 #define XMacros_h
 
-//不同屏幕尺寸字体适配
-#define kScreenWidthRatio  (Main_Screen_Width / 375.0)
-#define kScreenHeightRatio (Main_Screen_Height / 667.0)
-#define AdaptedWidth(x)  ceilf((x) * kScreenWidthRatio)
-#define AdaptedHeight(x) ceilf((x) * kScreenHeightRatio)
-
 // MainScreen Height&Width
 #define KScreenHeight      [[UIScreen mainScreen] bounds].size.height
 #define KScreenWidth       [[UIScreen mainScreen] bounds].size.width
+
+//不同屏幕尺寸字体适配
+#define kScreenWidthRatio  (KScreenWidth / 375.0)
+#define kScreenHeightRatio (KScreenHeight / 667.0)
+#define AdaptedWidth(x)  ceilf((x) * kScreenWidthRatio)
+#define AdaptedHeight(x) ceilf((x) * kScreenHeightRatio)
 
 //色值
 #define RGBA(r,g,b,a) [UIColor colorWithRed:r/255.0f green:g/255.0f blue:b/255.0f alpha:a]
