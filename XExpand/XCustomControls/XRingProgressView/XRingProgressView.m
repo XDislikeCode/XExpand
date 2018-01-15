@@ -7,6 +7,7 @@
 //
 
 #import "XRingProgressView.h"
+#import "UIView+X.h"
 
 @interface XRingProgressView()
 
@@ -56,11 +57,11 @@
 
 -(void)initData
 {
-    self.backLineColor = kRGBColor(244, 244, 244);
+    self.backLineColor = RGB(244, 244, 244);
     self.backLineLength = 18;
     self.backLineWidth = 1.0;
     
-    self.progressLineColor = kRGBAColor(255, 255, 0, 1.0);
+    self.progressLineColor = RGBA(255, 255, 0, 1.0);
     self.progressLineLength = 26;
     self.progressLineWidth = 3.0;
     
@@ -81,7 +82,7 @@
     float space = self.progressLineLength - self.backLineLength;
     
     CAShapeLayer *backBorder = [CAShapeLayer layer];
-    backBorder.frame = CGRectMake(space/2, space/2, self.width - space, self.height - space);
+    backBorder.frame = CGRectMake(space/2, space/2, self.x_width - space, self.x_height - space);
     backBorder.strokeColor = self.backLineColor.CGColor;    //边缘线条颜色
     backBorder.fillColor = nil;     //填充的颜色
     //路径圆

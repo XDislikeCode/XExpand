@@ -193,6 +193,7 @@ static char kActionHandlerLongPressGestureKey;
 {
     UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:image]];
     imageView.contentMode = UIViewContentModeScaleAspectFill;
+    [self addSubview:imageView];
     return imageView;
 }
 

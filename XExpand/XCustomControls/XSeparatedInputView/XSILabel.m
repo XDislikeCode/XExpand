@@ -7,6 +7,7 @@
 //
 
 #import "XSILabel.h"
+#import "XMacros.h"
 
 #define ADAPTER_RATE 1
 
@@ -72,11 +73,11 @@
     CGFloat strokHidth = 0.5*ADAPTER_RATE;
     CGContextSetLineWidth(context, lineHidth);
     if ( k<=self.text.length ) {
-        CGContextSetStrokeColorWithColor(context,KBlueColor.CGColor);
-        CGContextSetFillColorWithColor(context,KBlueColor.CGColor);
+        CGContextSetStrokeColorWithColor(context,[UIColor redColor].CGColor);
+        CGContextSetFillColorWithColor(context,[UIColor redColor].CGColor);
     }else{
-        CGContextSetStrokeColorWithColor(context,kRGBAColor(0, 0, 0, 0.5).CGColor);
-        CGContextSetFillColorWithColor(context,kRGBAColor(0, 0, 0, 0.5).CGColor);
+        CGContextSetStrokeColorWithColor(context,RGBA(0, 0, 0, 0.5).CGColor);
+        CGContextSetFillColorWithColor(context,RGBA(0, 0, 0, 0.5).CGColor);
     }
     
     CGRect rectangle = CGRectMake(k*width+width/10,height-lineHidth-strokHidth,width-width/5,strokHidth);

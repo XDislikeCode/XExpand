@@ -7,8 +7,8 @@
 //
 
 /**
- 访问权限 plist设置
- 
+                                    app权限获取管理
+ plist设置：
  <key>NSContactsUsageDescription</key>
  <string>请求访问通讯录</string>
  <key>NSMicrophoneUsageDescription</key>
@@ -21,25 +21,35 @@
  <string>始终访问地理位置</string>
  <key>NSLocationWhenInUseUsageDescription</key>
  <string>在使用期间访问地理位置</string>
+ <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+ <string>需要访问地理位置</string>
+ <key>NSLocationAlwaysUsageDescription</key>
+ <string>始终访问地理位置</string>
+ <key>NSLocationUsageDescription</key>
+ <string>需要访问地理位置</string>
+ <key>NSLocationWhenInUseUsageDescription</key>
+ <string>在使用期间访问地理位置</string>
  <key>NSCalendarsUsageDescription</key>
  <string>请求访问日历</string>
  */
 
 /**
- XAuthorityTool使用：
+ 使用：
  1.调用hasAuthor方法判断是否获取权限或是没有请求过权限
  2.没有请求过调用obtainAuthorizedStausCompletionBlock：来进行第一次请求权限
  3.根据获得的状态进行后续提示
  */
+
+
+
+
+#import <Foundation/Foundation.h>
 
 typedef NS_ENUM(NSUInteger, XAuthorityState) {
     XAuthorityStateSuccess,        //获取权限成功
     XAuthorityStateFailed,         //获取权限失败
     XAuthorityStateNotDetermined,  //用户还没有决定
 };
-
-
-#import <Foundation/Foundation.h>
 
 @interface XAuthorityTool : NSObject
 
@@ -68,6 +78,7 @@ typedef NS_ENUM(NSUInteger, XAuthorityState) {
 #pragma mark - 获取定位权限 -
 //定位服务是否开启  需要确认定位服务开启然后判断权限
 +(BOOL)locationServicesEnabled;
+//是否有定位权限
 +(XAuthorityState)hasLocationAuthor;
 
 

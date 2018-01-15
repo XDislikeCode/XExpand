@@ -111,16 +111,16 @@
 #pragma mark - 代码简写
 @interface UIView (XFrame)
 
-@property (nonatomic) CGFloat left;        ///< Shortcut for frame.origin.x.
-@property (nonatomic) CGFloat top;         ///< Shortcut for frame.origin.y
-@property (nonatomic) CGFloat right;       ///< Shortcut for frame.origin.x + frame.size.width
-@property (nonatomic) CGFloat bottom;      ///< Shortcut for frame.origin.y + frame.size.height
-@property (nonatomic) CGFloat width;       ///< Shortcut for frame.size.width.
-@property (nonatomic) CGFloat height;      ///< Shortcut for frame.size.height.
-@property (nonatomic) CGFloat centerX;     ///< Shortcut for center.x
-@property (nonatomic) CGFloat centerY;     ///< Shortcut for center.y
-@property (nonatomic) CGPoint origin;      ///< Shortcut for frame.origin.
-@property (nonatomic) CGSize  size;        ///< Shortcut for frame.size.
+@property (nonatomic) CGFloat x_left;        ///< Shortcut for frame.origin.x.
+@property (nonatomic) CGFloat x_top;         ///< Shortcut for frame.origin.y
+@property (nonatomic) CGFloat x_right;       ///< Shortcut for frame.origin.x + frame.size.width
+@property (nonatomic) CGFloat x_bottom;      ///< Shortcut for frame.origin.y + frame.size.height
+@property (nonatomic) CGFloat x_width;       ///< Shortcut for frame.size.width.
+@property (nonatomic) CGFloat x_height;      ///< Shortcut for frame.size.height.
+@property (nonatomic) CGFloat x_centerX;     ///< Shortcut for center.x
+@property (nonatomic) CGFloat x_centerY;     ///< Shortcut for center.y
+@property (nonatomic) CGPoint x_origin;      ///< Shortcut for frame.origin.
+@property (nonatomic) CGSize  x_size;        ///< Shortcut for frame.size.
 
 @end
 

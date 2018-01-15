@@ -255,7 +255,9 @@
 {
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:str preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
-    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"好的" style:UIAlertActionStyleDefault handler:nil];
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"好的" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [XAuthorityTool setRequestOpenURL];
+    }];
     [alert addAction:cancelAction];
     [alert addAction:okAction];
     [[UIApplication sharedApplication].keyWindow.currentViewController presentViewController:alert animated:YES completion:nil];
