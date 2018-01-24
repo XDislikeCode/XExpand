@@ -23,6 +23,7 @@
 #import "UIDevice+X.h"
 #import "UITextField+X.h"
 #import "UIView+X.h"
+#import "UIScrollView+X.h"
 
 #import "NSArray+X.h"
 #import "NSData+X.h"
