@@ -15,6 +15,21 @@
                     textColor:(UIColor *)color
                 textAlignment:(NSTextAlignment)textAlignment;
 
+/**
+ *  一段文字不同字体设置
+ */
+-(void) addAttributeTextFont:(UIFont *)font range:(NSRange)range;
+
+/**
+ *  一段文字不同颜色设置
+ */
+-(void) addAttributeTextColor:(UIColor *)color range:(NSRange)range;
+
+/**
+ *  一段文字加下划线
+ */
+-(void) addAttributeBottomLineWithRange:(NSRange)range;
+
 @end
 
 #pragma mark - 修改间距

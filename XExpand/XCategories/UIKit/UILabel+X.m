@@ -21,6 +21,40 @@
     return label;
 }
 
+-(void)addAttributeTextFont:(UIFont *)font range:(NSRange)range
+{
+    NSAssert(self.text, @"label.text no value!");
+    NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc] initWithString:self.text];
+    if (self.attributedText) {
+        attrStr = [[NSMutableAttributedString alloc] initWithAttributedString:self.attributedText];
+    }
+    [attrStr addAttribute:NSFontAttributeName value:font range:range];
+    self.attributedText = attrStr;
+}
+
+-(void)addAttributeTextColor:(UIColor *)color range:(NSRange)range
+{
+    NSAssert(self.text, @"label.text no value!");
+    NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc] initWithString:self.text];
+    if (self.attributedText) {
+        attrStr = [[NSMutableAttributedString alloc] initWithAttributedString:self.attributedText];
+    }
+    [attrStr addAttribute:NSForegroundColorAttributeName value:color range:range];
+    self.attributedText = attrStr;
+}
+
+-(void)addAttributeBottomLineWithRange:(NSRange)range
+{
+    NSAssert(self.text, @"label.text no value!");
+    NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc] initWithString:self.text];
+    if (self.attributedText) {
+        attrStr = [[NSMutableAttributedString alloc] initWithAttributedString:self.attributedText];
+    }
+    [attrStr addAttribute:NSUnderlineStyleAttributeName value:[NSNumber numberWithInteger:NSUnderlineStyleSingle] range:range];
+    self.attributedText = attrStr;
+}
+
+
 @end
 
 
