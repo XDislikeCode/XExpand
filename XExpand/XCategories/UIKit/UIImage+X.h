@@ -163,6 +163,29 @@
 #pragma mark - GIF图片
 @interface UIImage (XGif)
 
+/**
+ gif分解成多张图片
+ 
+ @param data gifData
+ @return 多张图片数组
+ */
++(NSArray *)deCompositionGifData:(NSData *)data;
+
+/**
+ 多张图片生成gif
+ 
+ @param imageArray 图片数组
+ @return gif地址
+ */
++ (NSString *)gifUrlWithImageArray:(NSArray<UIImage *> *)imageArray;
+
+
+/**
+ Gif显示
+
+ @param name gif名称
+ @return gif图片
+ */
 + (nullable UIImage *)imageWithAnimatedGIFNamed:(nullable NSString *)name;
 
 + (nullable UIImage *)imageWithAnimatedGIFWithData:(nullable NSData *)data;
