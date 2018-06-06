@@ -611,4 +611,26 @@
                                       toDate:fromDate
                                      options:0];
 }
+
+//计算年龄
+- (NSInteger)ageOfDate
+{
+    //当前时间
+    NSDate *currentDate = [NSDate date];
+    NSTimeInterval time=[currentDate timeIntervalSinceDate:self];
+    int age = ((int)time)/(3600*24*365);
+    return age;
+}
+
+//计算星座
+-(NSString *)constellationOfDate
+{
+    NSArray *constellations = @[@"水瓶座", @"双鱼座", @"白羊座", @"金牛座", @"双子座", @"巨蟹座", @"狮子座", @"处女座", @"天秤座", @"天蝎座", @"射手座", @"摩羯座"];
+    NSInteger index;
+    NSArray *conIndexs = @[@(20),@(19),@(21),@(20),@(21),@(22),@(23),@(23),@(23),@(24),@(23),@(22)];
+    if ([[conIndexs objectAtIndex:self.month] integerValue] <= self.day + 1) {
+        index = self.month;
+    } else index = (self.month - 1 + 12) % 12;
+    return [constellations objectAtIndex:index];
+}
 @end

@@ -49,6 +49,7 @@ typedef void (^LocationFailed)(NSError *error);
 
 /**
  停止定位
+ 所有使用了该类持续定位的地方都会停止定位
  */
 - (void)stop;
 

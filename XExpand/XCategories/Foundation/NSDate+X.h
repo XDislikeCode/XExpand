@@ -222,4 +222,14 @@
 + (NSString *)hmsFormat;
 + (NSString *)ymdHmsFormat;
 
+/**
+ 获取年龄
+ */
+- (NSInteger)ageOfDate;
+
+/**
+ 获取星座
+ */
+-(NSString *)constellationOfDate;
+
 @end
