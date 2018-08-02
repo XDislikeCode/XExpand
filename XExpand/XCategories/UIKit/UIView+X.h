@@ -28,6 +28,9 @@
         borderWidth: (CGFloat)width
               color: (UIColor *_Nullable)color;
 
+/** 单独切圆角 */
+-(void)cornerRadiusByRoundingCorners:(UIRectCorner)corners cornerRadii:(CGSize)cornerRadii;
+
 
 /** 设置阴影 */
 -(void)shadowWithColor: (UIColor *_Nullable)color

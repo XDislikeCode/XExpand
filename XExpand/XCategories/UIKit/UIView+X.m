@@ -67,6 +67,17 @@
     self.layer.borderWidth = width;
 }
 
+/** 单独切圆角 */
+-(void)cornerRadiusByRoundingCorners:(UIRectCorner)corners cornerRadii:(CGSize)cornerRadii
+{
+    UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:self.bounds byRoundingCorners:corners cornerRadii:cornerRadii];
+    CAShapeLayer *maskLayer = [[CAShapeLayer alloc]init];
+    maskLayer.frame = self.bounds;
+    maskLayer.path = path.CGPath;
+    self.layer.mask = maskLayer;
+}
+
+
 /**
  *  设置阴影
  */
